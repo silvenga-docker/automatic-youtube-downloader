@@ -19,7 +19,8 @@ RUN set -xe \
     && git checkout ${AYD_VERSION} \
     && pip3 install -r requirements.txt \
     && python3 ./poetry/get_poetry.py --version 0.12.11 \
-    && ./poetry/bin/poetry install --no-interaction --no-ansi
+    && ./poetry/bin/poetry install --no-interaction --no-ansi \
+    && mkdir ./logs
 
 VOLUME [ "/app/data" ]
 
