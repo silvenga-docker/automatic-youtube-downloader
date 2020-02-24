@@ -19,7 +19,9 @@ RUN set -xe \
     && git clone ${AYD_URL} . \
     && git checkout ${AYD_VERSION} \
     && pip3 install -r requirements.txt \
-    && POETRY_VIRTUALENVS_CREATE=false poetry install --no-interaction --no-ansi
+    && mkdir -p /app/poetry/bin \
+    && ln -s /usr/local/bin/poetry /app/poetry/bin/poetry \
+    && POETRY_VIRTUALENVS_CREATE=false ./poetry/bin/poetry install --no-interaction --no-ansi
 
 VOLUME [ "/app/data" ]
 
