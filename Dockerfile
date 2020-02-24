@@ -8,7 +8,6 @@ ARG AYD_URL=https://github.com/PizzaWaffles/Automatic-Youtube-Downloader.git
 RUN set -xe \
     && apt-get update \
     && apt-get install -y git ffmpeg \
-    && pip3 install "poetry==0.12.11" \
     && mkdir /app \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -19,9 +18,8 @@ RUN set -xe \
     && git clone ${AYD_URL} . \
     && git checkout ${AYD_VERSION} \
     && pip3 install -r requirements.txt \
-    && mkdir -p /app/poetry/bin \
-    && ln -s /usr/local/bin/poetry /app/poetry/bin/poetry \
-    && POETRY_VIRTUALENVS_CREATE=false ./poetry/bin/poetry install --no-interaction --no-ansi
+    && python3 ./poetry/get_poetry.py --version 0.12.11 \
+    && ./poetry/bin/poetry install --no-interaction --no-ansi
 
 VOLUME [ "/app/data" ]
 
