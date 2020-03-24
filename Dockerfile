@@ -2,7 +2,7 @@ FROM python:3.7-slim
 
 # Poetry does not support python 3.7.
 
-ARG AYD_VERSION=13e134238bb8470f89f38dbefa7bb2fa2c754c3a
+ARG AYD_VERSION=f7ec2f363504cd50628363caa21ed6e0c90363d3
 ARG AYD_URL=https://github.com/PizzaWaffles/Automatic-Youtube-Downloader.git
 
 RUN set -xe \
